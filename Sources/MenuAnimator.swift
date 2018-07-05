@@ -110,6 +110,7 @@ private extension MenuInteractiveTransition {
                                                        action: #selector(MenuInteractiveTransition.handlePanDismission(recognizer:)))
             }
 
+            contentSnapshotView?.removeFromSuperview()
             contentSnapshotView = createSnapshotView(from: fromViewController.view)
 
             guard let contentSnapshotView = self.contentSnapshotView else {
@@ -121,6 +122,9 @@ private extension MenuInteractiveTransition {
             fromViewController.view.isHidden = true
         } else {
             containerView.addSubview(toViewController.view)
+            
+            //mandatory to force refresh of layout changes 
+            containerView.layoutIfNeeded()
 
             toViewController.view.transform = CGAffineTransform(scaleX: options.contentScale, y: options.contentScale)
             addShadow(to: toViewController.view)

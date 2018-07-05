@@ -30,11 +30,6 @@ open class MenuContainerViewController: UIViewController {
     fileprivate weak var currentContentViewController: UIViewController?
     fileprivate var navigationMenuTransitionDelegate: MenuTransitioningDelegate!
 
-    /**
-     Flag indicating if the side menu is being shown.
-     */
-    fileprivate var isShown = false
-
     public var currentItemOptions = SideMenuItemOptions() {
         didSet {
             navigationMenuTransitionDelegate?.currentItemOptions = currentItemOptions
@@ -102,9 +97,7 @@ open class MenuContainerViewController: UIViewController {
 
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
-        if self.isShown {
             self.hideSideMenu()
-        }
     }
     
     override open func viewDidLayoutSubviews() {
@@ -180,7 +173,6 @@ fileprivate extension MenuContainerViewController {
             fatalError("Invalid `menuViewController` value. It should not be nil")
         }
         present(menuViewController, animated: true, completion: nil)
-        isShown = true
     }
 
     /**
@@ -188,7 +180,6 @@ fileprivate extension MenuContainerViewController {
      */
     func dismissNavigationMenu() {
         self.dismiss(animated: true, completion: nil)
-        isShown = false
     }
 }
 
