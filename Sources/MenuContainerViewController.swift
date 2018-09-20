@@ -179,7 +179,7 @@ fileprivate extension MenuContainerViewController {
      Dismisses left side menu.
      */
     func dismissNavigationMenu() {
-        self.dismiss(animated: true, completion: nil)
+        menuViewController.dismiss(animated: true, completion: nil)
     }
 }
 
