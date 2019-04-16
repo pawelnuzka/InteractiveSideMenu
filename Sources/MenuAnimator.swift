@@ -110,6 +110,7 @@ private extension MenuInteractiveTransition {
                                                        action: #selector(MenuInteractiveTransition.handlePanDismission(recognizer:)))
             }
 
+            (fromViewController as? MenuContainerViewController)?.isSideMenuVisible = true
             contentSnapshotView?.removeFromSuperview()
             contentSnapshotView = createSnapshotView(from: fromViewController.view)
 
@@ -170,6 +171,7 @@ private extension MenuInteractiveTransition {
 
                 toViewController.view.addSubview(contentSnapshotView)
             } else {
+                (toViewController as? MenuContainerViewController)?.isSideMenuVisible = false
                 toViewController.view.isHidden = false
                 self.removeShadow(from: toViewController.view)
             }
@@ -251,6 +253,7 @@ private extension MenuInteractiveTransition {
 
             if self.present {
                 fromViewController.view.isHidden = false
+                (fromViewController as? MenuContainerViewController)?.isSideMenuVisible = false
             } else {
                 toViewController.view.removeFromSuperview()
                 contentSnapshotView.isHidden = false

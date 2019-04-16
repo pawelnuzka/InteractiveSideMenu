@@ -22,6 +22,14 @@ import UIKit
  Container for menu view controller.
  */
 open class MenuContainerViewController: UIViewController {
+    
+    public var isSideMenuVisible = false {
+        didSet {
+            self.contentViewControllers.forEach {
+                $0.sideMenuDidUpdate(visible: isSideMenuVisible)
+            }
+        }
+    }
 
     open override var preferredStatusBarStyle: UIStatusBarStyle {
         return currentContentViewController?.preferredStatusBarStyle ?? .lightContent
@@ -66,7 +74,7 @@ open class MenuContainerViewController: UIViewController {
     /**
      The list of all content view controllers corresponding to side menu items.
      */
-    public var contentViewControllers = [UIViewController]()
+    public var contentViewControllers = [UIViewController & SideMenuItemContent]()
 
 
     // MARK: - Controller lifecycle

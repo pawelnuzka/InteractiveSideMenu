@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = "InteractiveSideMenu"
-  s.version      = "2.6"
+  s.version      = "2.7"
   s.summary      = "Interactive Side Menu in Swift"
   s.homepage     = "https://github.com/handsomecode/InteractiveSideMenu"
   s.license      = "Apache 2.0 license"

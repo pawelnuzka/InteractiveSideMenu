@@ -27,6 +27,8 @@ public protocol SideMenuItemContent {
      Shows left side menu.
      */
     func showSideMenu()
+    
+    func sideMenuDidUpdate(visible: Bool)
 }
 
 /**
@@ -43,3 +45,4 @@ extension SideMenuItemContent where Self: UIViewController {
         }
     }
 }
+
