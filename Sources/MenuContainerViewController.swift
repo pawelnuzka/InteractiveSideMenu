@@ -106,6 +106,7 @@ open class MenuContainerViewController: UIViewController {
     override open func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
             self.hideSideMenu()
+            isSideMenuVisible = false
     }
     
     override open func viewDidLayoutSubviews() {
